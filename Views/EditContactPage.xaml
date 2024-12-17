@@ -5,9 +5,11 @@
              Title="EditContactPage">
     <VerticalStackLayout>
         <Label 
+            x:Name="lblName"
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Button x:Name="btnCancel" Text="Cancel" Clicked="btnCancel_Clicked"></Button>
     </VerticalStackLayout>
 </ContentPage>
+    
