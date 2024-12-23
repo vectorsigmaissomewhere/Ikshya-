@@ -18,7 +18,34 @@ namespace Contacts.Maui.Models
         public static List<Contact> GetContacts() => contacts;
         public static Contact GetContactById(int contactId)
         {
-            return contacts.FirstOrDefault(x => x.ContactId == contactId);
+            var contact = contacts.FirstOrDefault(x => x.ContactId == contactId);
+            if (contact == null)
+            {
+                return new Contact
+                {
+                    ContactId = contactId,
+                    Address = contact.Address, 
+                    Email = contact.Email, 
+                    Name = contact.Name,
+                    Phone = contact.Phone 
+                };
+            }
+            return null;
+        }
+        public static void UpdateContact(int contactId, Contact contact)
+        {
+            if (contactId != contact.ContactId) return;
+
+            var contactToUpdate = contacts.FirstOrDefault(x => x.ContactId == contactId);
+            if (contactToUpdate != null)
+            {
+                // AutoMapper 
+                contactToUpdate.Address = contact.Address;
+                contactToUpdate.Email = contact.Email;
+                contactToUpdate.Name = contact.Name;
+                contactToUpdate.Phone = contact.Phone;
+            }
+          
         }
     }
 }
